@@ -1,10 +1,11 @@
 import React from 'react';
-
-export const Header = () => {
-    return (
-        <h1>Hello</h1>
-    );
+import {Search} from './Search'
+export const Header = (props) => {
+    return(
+            <div className="container-fluid custom-nav">
+              <div className="mt-2 mr-3 navbar-search">
+              <Search value = {props.value} onChange={props.handleChange}/>
+              </div>
+              </div>
+    )
 }
-
-
-// export default Header;
