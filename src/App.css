@@ -5,149 +5,56 @@
   background-color: #fff;
 }
 
-.my-masonry-grid {
-  display: -webkit-box; /* Not needed if autoprefixing */
-  display: -ms-flexbox; /* Not needed if autoprefixing */
+/* styling for Masonry Grid */
+.grid {
   display: flex;
-  margin-left: -30px; /* gutter size offset */
   width: auto;
   padding: 20px 70px;
-  column-count: 4;
 }
-.my-masonry-grid_column {
-  padding-left: 10px; /* gutter size */
+.item {
+  padding: 10px;
   background-clip: padding-box;
 }
 
-/* Style your items */
-.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
-  /* background: grey; */
+.item > div { 
   margin-bottom: 30px;
 }
 
-
-/* Loading Animation CSS */
-
-@keyframes ldio-hl03nm3jts6 {
-   0% { transform: translate(12px,80px) scale(0); }
-  25% { transform: translate(12px,80px) scale(0); }
-  50% { transform: translate(12px,80px) scale(1); }
-  75% { transform: translate(80px,80px) scale(1); }
- 100% { transform: translate(148px,80px) scale(1); }
-}
-@keyframes ldio-hl03nm3jts6-r {
-   0% { transform: translate(148px,80px) scale(1); }
- 100% { transform: translate(148px,80px) scale(0); }
-}
-@keyframes ldio-hl03nm3jts6-c {
-   0% { background: #4fb47e }
-  25% { background: #062a52 }
-  50% { background: #4fb47e }
-  75% { background: #062a52 }
- 100% { background: #4fb47e }
-}
-.ldio-hl03nm3jts6 div {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transform: translate(80px,80px) scale(1);
-  background: #4fb47e;
-  animation: ldio-hl03nm3jts6 1s infinite cubic-bezier(0,0.5,0.5,1);
-}
-.ldio-hl03nm3jts6 div:nth-child(1) {
-  background: #062a52;
-  transform: translate(148px,80px) scale(1);
-  animation: ldio-hl03nm3jts6-r 0.25s infinite cubic-bezier(0,0.5,0.5,1), ldio-hl03nm3jts6-c 1s infinite step-start;
-}.ldio-hl03nm3jts6 div:nth-child(2) {
-  animation-delay: -0.25s;
-  background: #4fb47e;
-}.ldio-hl03nm3jts6 div:nth-child(3) {
-  animation-delay: -0.5s;
-  background: #062a52;
-}.ldio-hl03nm3jts6 div:nth-child(4) {
-  animation-delay: -0.75s;
-  background: #4fb47e;
-}.ldio-hl03nm3jts6 div:nth-child(5) {
-  animation-delay: -1s;
-  background: #062a52;
-}
-.loadingio-spinner-ellipsis-mooxcqql2ek {
-  width: 200px;
-  height: 200px;
-  display: inline-block;
-  overflow: hidden;
-  background: none;
-}
-.ldio-hl03nm3jts6 {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform: translateZ(0) scale(1);
-  backface-visibility: hidden;
-  transform-origin: 0 0; /* see note above */
-}
-.ldio-hl03nm3jts6 div { box-sizing: content-box; }
-/* End of Loading Animation CSS */
-
-
-
-.custom-box{
-  position: relative;
-  height: auto;
-  width:100%;
-  margin: auto;
-padding: 45px 0;
-display: grid;
-grid-template-columns: auto auto auto auto;
-grid-gap: 2vh;
-grid-auto-flow: dense;
-}
-
-.box{
-  position: relative;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-
-}
-
-.image2{
+.grid-image{
+  border-radius: 8px;
   height: 100%;
   width: 100%;
   object-fit: cover;
+  
 }
 
+
+/* Styling for Header */
 .header{
   background-image: url(./spenny.jpg);
-  /* object-fit: inherit; */
   height: 70vh;
-  
 }
 
 .title{
   color:white;
-
   margin-top: 50px;
-  /* position: absolute; */
 }
-
 .custom-search{
   height: 70px;
   outline-color:#062a52;
   padding-left: 20px;
 }
-.custom-btn{
+/* search button inside Banner */
+.custom-btn{ 
   height: 70px;
   width: 80px;
   color: white;
-  
   background-color: #062a52;
 }
 .custom-btn:hover{
   color: #0D8;
 }
-
+/* Search Button inside Navbar */
 .navbar-search .custom-btn{
   background-color: #4fb47e;  
 }
@@ -168,3 +75,70 @@ transition: all 0.5s;
 visibility: hidden;
 transition: all 0.5s;
 }
+
+
+
+
+/* Loading Animation CSS */
+
+@keyframes ldio-hl03nm3jts6 {
+  0% { transform: translate(12px,80px) scale(0); }
+ 25% { transform: translate(12px,80px) scale(0); }
+ 50% { transform: translate(12px,80px) scale(1); }
+ 75% { transform: translate(80px,80px) scale(1); }
+100% { transform: translate(148px,80px) scale(1); }
+}
+@keyframes ldio-hl03nm3jts6-r {
+  0% { transform: translate(148px,80px) scale(1); }
+100% { transform: translate(148px,80px) scale(0); }
+}
+@keyframes ldio-hl03nm3jts6-c {
+  0% { background: #4fb47e }
+ 25% { background: #062a52 }
+ 50% { background: #4fb47e }
+ 75% { background: #062a52 }
+100% { background: #4fb47e }
+}
+.ldio-hl03nm3jts6 div {
+ position: absolute;
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ transform: translate(80px,80px) scale(1);
+ background: #4fb47e;
+ animation: ldio-hl03nm3jts6 1s infinite cubic-bezier(0,0.5,0.5,1);
+}
+.ldio-hl03nm3jts6 div:nth-child(1) {
+ background: #062a52;
+ transform: translate(148px,80px) scale(1);
+ animation: ldio-hl03nm3jts6-r 0.25s infinite cubic-bezier(0,0.5,0.5,1), ldio-hl03nm3jts6-c 1s infinite step-start;
+}.ldio-hl03nm3jts6 div:nth-child(2) {
+ animation-delay: -0.25s;
+ background: #4fb47e;
+}.ldio-hl03nm3jts6 div:nth-child(3) {
+ animation-delay: -0.5s;
+ background: #062a52;
+}.ldio-hl03nm3jts6 div:nth-child(4) {
+ animation-delay: -0.75s;
+ background: #4fb47e;
+}.ldio-hl03nm3jts6 div:nth-child(5) {
+ animation-delay: -1s;
+ background: #062a52;
+}
+.loadingio-spinner-ellipsis-mooxcqql2ek {
+ width: 200px;
+ height: 200px;
+ display: inline-block;
+ overflow: hidden;
+ background: none;
+}
+.ldio-hl03nm3jts6 {
+ width: 100%;
+ height: 100%;
+ position: relative;
+ transform: translateZ(0) scale(1);
+ backface-visibility: hidden;
+ transform-origin: 0 0;
+}
+.ldio-hl03nm3jts6 div { box-sizing: content-box; }
+/* End of Loading Animation CSS */

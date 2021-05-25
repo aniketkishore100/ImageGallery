@@ -3,47 +3,39 @@ import {React,useState,useEffect} from 'react';
 export const CustomMasonry = (props)=> {
   const [columnCount,setColumnCount] = useState(props.breakpointCols.defaut);
 
-  useEffect(()=>{
+  useEffect(()=>{ //on Component mount
     reCalculateColumnCount();
     window.addEventListener('resize',reCalculateColumnCountDebounce);
 
-
-    return ()=>{
+    return ()=>{ //on Component Unmount
       window.removeEventListener('resize', reCalculateColumnCountDebounce);
     }
 
   })
 
-  useEffect(()=>{
+  useEffect(()=>{ //whenever state columnCount changes
     reCalculateColumnCount();
   },[columnCount])
 
-  const reCalculateColumnCountDebounce=()=> {
+  const reCalculateColumnCountDebounce=()=> { //calls reCalculateColumnCount function after a certain period of event halt
     const lastRecalculateAnimationFrame = window.requestAnimationFrame(() => {
       reCalculateColumnCount();
     });
   }
 
-  const reCalculateColumnCount=()=> {
+  const reCalculateColumnCount=()=> { // responsible for switching to Breakpoints with respect to size of window
     const windowWidth = window && window.innerWidth || Infinity;
-    let breakpointColsObject = props.breakpointCols;
 
-    if(typeof breakpointColsObject !== 'object') {
-      breakpointColsObject = {
-        default: parseInt(breakpointColsObject)
-      }
-    }
+    let breakpointMatch = Infinity; //threshold BreakPoint
+    let columns = props.breakpointCols.default //columns set to default provided through the props
 
-    let matchedBreakpoint = Infinity;
-    let columns = breakpointColsObject.default
+    for(let breakpoint in props.breakpointCols) {
+      const breakpointOpt = parseInt(breakpoint);
+      const isCurrentBreakpoint = breakpointOpt > 0 && windowWidth <= breakpointOpt; //checks if current window width is in the current default range
 
-    for(let breakpoint in breakpointColsObject) {
-      const optBreakpoint = parseInt(breakpoint);
-      const isCurrentBreakpoint = optBreakpoint > 0 && windowWidth <= optBreakpoint;
-
-      if(isCurrentBreakpoint && optBreakpoint < matchedBreakpoint) {
-        matchedBreakpoint = optBreakpoint;
-        columns = breakpointColsObject[breakpoint];
+      if(isCurrentBreakpoint && breakpointOpt < breakpointMatch) { //if current width crosses the threshold resolution
+        breakpointMatch = breakpointOpt;  //change the threshold width
+        columns = props.breakpointCols[breakpoint]; // reset the columns according to new threshold
       }
     }
 
@@ -54,24 +46,24 @@ export const CustomMasonry = (props)=> {
     }
   }
 
-  const itemsInColumns=()=> {
+  const ColumnContent=()=> { //maps each item of the grid to Column number from 0 to column-1
     const itemsInColumns = new Array(columnCount);
 
     for (let i = 0; i < props.children.length; i++) {
       const columnIndex = i % columnCount;
 
-      if(!itemsInColumns[columnIndex]) {
-        itemsInColumns[columnIndex] = [];
+      if(!itemsInColumns[columnIndex]) { //if current position in the array is empty 
+        itemsInColumns[columnIndex] = []; //initialize with an empty array inside the itemsInColumns array
       }
 
-      itemsInColumns[columnIndex].push(props.children[i]);
+      itemsInColumns[columnIndex].push(props.children[i]); //if already has empty nested array pushes the Column number i into the array
     }
 
     return itemsInColumns;
   }
 
   const renderColumns=()=> {
-    const childrenInColumns = itemsInColumns();
+    const childrenInColumns = ColumnContent(); //array of arrays
     const columnWidth = `${100 / childrenInColumns.length}%`;
     let className = props.columnClassName;
 

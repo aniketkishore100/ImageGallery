@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {Paper, Typography} from '@material-ui/core';
+import React from 'react';
 import {Search} from './Search'
-import Image from '../spenny.jpg'
-import Logo from '../logo.png'
 
 export const Banner = (props) => {
     return (
@@ -10,7 +7,7 @@ export const Banner = (props) => {
             <div className='row '>
                 <div className='col-1'>
                     <a href="/">
-                <img src="../logo.png"></img>
+                <img alt="banner logo"src="../logo.png"></img>
                 </a>
                 </div>
             </div>
