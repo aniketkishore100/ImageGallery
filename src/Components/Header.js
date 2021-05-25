@@ -12,11 +12,9 @@ export const Header = (props) => {
         }
     },[])
 const handleScroll = () =>{
-    console.log(document.body.getBoundingClientRect().top)
     setscrollPos(document.body.getBoundingClientRect().top)
     setShow(document.body.getBoundingClientRect().top > scrollPos-290)
 }
-{console.log(show , scrollPos)}
     return(
         
         <div className={show?'nav-hidden':'nav-active'}>

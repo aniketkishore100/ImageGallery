@@ -35,7 +35,6 @@ function App() {
   const fetchContent = ()=>{
     setCount(pageCount+1);
     var apiRoot = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=e52a287d86469bf01ea901dfd92cf8a5&text=:${search}&media=photos&per_page=15&page=${pageCount}&format=json&nojsoncallback=1`
-    // console.log(pageCount);
     axios.get(apiRoot)
       .then(res => setImage([...images, ...res.data.photos.photo]));
 

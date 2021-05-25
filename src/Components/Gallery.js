@@ -1,17 +1,17 @@
 import React from 'react';
 import { Container, Paper } from '@material-ui/core'
-import Masonry from './Masonry';
+import {CustomMasonry} from './CustomMasonry';
 
 export const Gallery = (props) => {
 
     const breakpointColumnsObj = {
         default: 3,
-        700: 2,
+        1000: 2,
         500: 1
       };
     return (
 
-<Masonry
+<CustomMasonry
   breakpointCols={breakpointColumnsObj}
   className="my-masonry-grid"
   columnClassName="my-masonry-grid_column">
@@ -20,7 +20,7 @@ export const Gallery = (props) => {
                 <img style={{borderRadius: "8px"}} src={`https://farm${imageObj.farm}.staticflickr.com/${imageObj.server}/${imageObj.id}_${imageObj.secret}.jpg`} className="image2" />
             </div>
         ))}
-</Masonry>
+</CustomMasonry>
 
     )
 }
