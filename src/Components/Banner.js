@@ -1,6 +1,6 @@
 import React from 'react';
 import {Search} from './Search'
-import logo from '../logo.png'
+import logo from './logo.png'
 
 export const Banner = (props) => {
     return (
