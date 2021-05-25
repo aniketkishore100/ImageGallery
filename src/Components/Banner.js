@@ -1,5 +1,6 @@
 import React from 'react';
 import {Search} from './Search'
+import logo from '../logo.png'
 
 export const Banner = (props) => {
     return (
@@ -7,7 +8,7 @@ export const Banner = (props) => {
             <div className='row '>
                 <div className='col-1'>
                     <a href="/">
-                <img alt="banner logo"src="../logo.png"></img>
+                <img alt="banner logo"src={logo}></img>
                 </a>
                 </div>
             </div>
