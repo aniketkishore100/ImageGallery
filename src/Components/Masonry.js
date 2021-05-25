@@ -17,35 +17,18 @@ class Masonry extends React.Component {
 
   componentDidMount() {
     this.reCalculateColumnCount();
-
-    // window may not be available in some environments
-    if(window) {
-      window.addEventListener('resize', this.reCalculateColumnCountDebounce);
-    }
+    window.addEventListener('resize', this.reCalculateColumnCountDebounce);
   }
 
   componentDidUpdate() {
-      
-    {console.log("Column count",this.state.columnCount)}
     this.reCalculateColumnCount();
   }
 
   componentWillUnmount() {
-    if(window) {
       window.removeEventListener('resize', this.reCalculateColumnCountDebounce);
-    }
   }
 
   reCalculateColumnCountDebounce=()=> {
-    if(!window || !window.requestAnimationFrame) {  // IE10+
-      this.reCalculateColumnCount();
-      return;
-    }
-
-    if(window.cancelAnimationFrame) { // IE10+
-      window.cancelAnimationFrame(this._lastRecalculateAnimationFrame);
-    }
-
     this._lastRecalculateAnimationFrame = window.requestAnimationFrame(() => {
       this.reCalculateColumnCount();
     });
@@ -55,7 +38,6 @@ class Masonry extends React.Component {
     const windowWidth = window && window.innerWidth || Infinity;
     let breakpointColsObject = this.props.breakpointCols;
 
-    // Allow passing a single number to `breakpointCols` instead of an object
     if(typeof breakpointColsObject !== 'object') {
       breakpointColsObject = {
         default: parseInt(breakpointColsObject)
@@ -88,8 +70,7 @@ class Masonry extends React.Component {
     const currentColumnCount = this.state.columnCount;
     const itemsInColumns = new Array(currentColumnCount);
 
-    // Force children to be handled as an array
-    const items = React.Children.toArray(this.props.children)
+    const items = this.props.children
 
     for (let i = 0; i < items.length; i++) {
       const columnIndex = i % currentColumnCount;
@@ -113,8 +94,7 @@ class Masonry extends React.Component {
 
 
     const columnAttributes = {
-      style: {
-        
+      style: {     
         width: columnWidth
       },
       className

@@ -1,5 +1,6 @@
 import React, { useState, UseEffect, useEffect } from 'react';
 import './App.css';
+
 import { Banner } from './Components/Banner'
 import { Header } from './Components/Header'
 import { Loading } from './Components/Loader'
@@ -10,24 +11,28 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import axios from 'axios'
 
 function App() {
-  const [search, setValue] = useState("");
+  const [search, setValue] = useState("searchText");
   const [pageCount, setCount] = useState(1);
   const [images, setImage] = useState([]);
   // const [apiUrl, setUrl] = useState(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=e52a287d86469bf01ea901dfd92cf8a5&text=:${search}&media=photos&per_page=15&page=1&format=json&nojsoncallback=1`)
   useEffect(() => {
     fetchContent();
+    
   },[])
+
+  useEffect(()=>{
+    fetchContent()
+    console.log("Search Updated")
+  },[search])
+
 
   const handleChange = (newValue) =>{
     setImage([])
     setValue(newValue);
     setCount(1);
-    fetchContent();
-    console.log(search)
   }
 
   const fetchContent = ()=>{
-    console.log(search)
     setCount(pageCount+1);
     var apiRoot = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=e52a287d86469bf01ea901dfd92cf8a5&text=:${search}&media=photos&per_page=15&page=${pageCount}&format=json&nojsoncallback=1`
     // console.log(pageCount);
@@ -37,6 +42,8 @@ function App() {
     
   }
   return (
+
+   
     <div className="App">
       <div>
         <Header value={search} handleChange={handleChange}/>
