@@ -7,7 +7,7 @@ export const Banner = (props) => {
         <div className='container-fluid header mb-5'>
             <div className='row '>
                 <div className='col-1'>
-                    <a href="/">
+                    <a href="https://spennyapp.com/">
                 <img alt="banner logo"src={logo}></img>
                 </a>
                 </div>
