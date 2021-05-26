@@ -5,6 +5,10 @@ export const Search = (props) => {
 
   const text = useRef(""); //references to the current state of the search bar
   function handleChange(e) {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
     props.onChange(text.current.value)
   }
 
