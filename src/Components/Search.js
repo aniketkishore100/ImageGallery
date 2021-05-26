@@ -9,7 +9,7 @@ export const Search = (props) => {
   }
 
   const handleKeypress = e => {
-    //it triggers by pressing the enter key
+    //triggers by pressing the enter key
     if (e.which == 13) {
       handleChange();
     }
