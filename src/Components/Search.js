@@ -7,7 +7,6 @@ export const Search = (props) => {
   function handleChange(e) {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
     });
     props.onChange(text.current.value)
   }
